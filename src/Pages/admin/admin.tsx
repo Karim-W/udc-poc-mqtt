@@ -1,13 +1,10 @@
 import { Flex, Heading, Box } from '@chakra-ui/layout'
 import React from 'react'
 import "../../global.css"
-import { useMqttState } from 'mqtt-react-hooks';
-import * as MQTT from 'mqtt';
 import { MqttClientContext } from '../../Contexts/mqttClientContext';
 export default function Admin() {
     // const { mqttClient } = useMqttState();
-    const { connectionStatus } = useMqttState();
-    const { client, setClient } = React.useContext(MqttClientContext);
+    const { client } = React.useContext(MqttClientContext);
     function muteAll() {
         client.publish('UDC-013', 'Admin Muted All');
     }

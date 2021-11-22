@@ -9,7 +9,7 @@ export default function Enduser() {
         client.on('message', (topic: string, message: string) => {
             setMessages(messages => [...messages, message.toString()])
         })
-    }, [])
+    }, [client])
     return (
         <Flex width="100%" flexDirection="column" mt="3rem" justifyContent="center" alignItems="center">
             <Heading as="h1">Welcome EndUser,</Heading>

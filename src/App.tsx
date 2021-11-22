@@ -4,12 +4,10 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Enduser from './Pages/enduser/Enduser';
 import Admin from './Pages/admin/admin';
 import Home from './Pages/Home/Home';
-import { Connector } from 'mqtt-react-hooks';
 import * as mqtt from 'mqtt';
 import { MqttClientContext } from './Contexts/mqttClientContext';
 function App() {
   const [client, setClient] = useState<mqtt.Client>();
-  const [connectionStatus, setConnectStatus] = useState('');
   const mqttClientValue = useMemo(
     () => ({ client, setClient }),
     [client, setClient]
@@ -17,7 +15,7 @@ function App() {
 
   useEffect(() => {
     console.log('client');
-    var client = mqtt.connect("ws://20.124.99.194:9001")
+    var client = mqtt.connect("mqtt://20.124.99.194:9001")
     client.on("connect", function () {
       console.log("Connected")
       setClient(client)
